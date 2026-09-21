@@ -1,0 +1,332 @@
+// Centralized configuration and content for The Cedar & Stone Inn & Bistro
+// Designed for a freelance client: change values here to rebrand or customize for another hotel or restaurant in minutes.
+
+export const siteConfig = {
+  name: "The Cedar & Stone",
+  shortName: "Cedar & Stone",
+  tagline: "Boutique Stay & Garden Bistro",
+  heroSubtitle: "A calm, family-run 24-room retreat nestled beside historic town walls. Thoughtfully furnished rooms, seasonal garden dining, and genuine hospitality.",
+  established: "Est. 2014",
+  
+  contact: {
+    phone: "+1 (555) 248-8921",
+    phoneClean: "+15552488921",
+    email: "stay@cedarandstoneinn.com",
+    whatsapp: "+15552488921",
+    whatsappMessage: "Hello! I would like to inquire about availability at The Cedar & Stone.",
+    address: "42 Millpond Lane, Historic Quarter, Old Mill Town, VT 05401",
+    mapDirectionsUrl: "https://maps.google.com/?q=Historic+Quarter+Vermont",
+    parkingNote: "Free secure guest parking on premises with EV charging stations.",
+  },
+
+  hours: {
+    reception: "7:00 AM – 10:00 PM (Daily)",
+    checkIn: "3:00 PM onwards",
+    checkOut: "11:00 AM",
+    breakfast: "7:30 AM – 10:30 AM",
+    bistroLunch: "12:00 PM – 3:00 PM (Wed–Sun)",
+    bistroDinner: "5:30 PM – 9:30 PM (Wed–Sun)",
+  },
+
+  highlights: [
+    { label: "Check-in from 3 PM", detail: "Express keyless or warm reception" },
+    { label: "Complimentary Breakfast", detail: "Farm-to-table artisan bakery" },
+    { label: "Free Fiber Wi-Fi", detail: "High-speed coverage across grounds" },
+    { label: "Old Town Walk", detail: "4 mins stroll to artisan market" },
+  ],
+
+  stats: [
+    { value: "24", label: "Cozy boutique rooms" },
+    { value: "100%", label: "Locally-sourced ingredients" },
+    { value: "4.9 / 5", label: "Average guest rating" },
+    { value: "12 yrs", label: "Family-owned hospitality" },
+  ],
+
+  about: {
+    title: "Hospitality born from a love of good food and restful spaces.",
+    paragraphs: [
+      "Founded by the Miller family in 2014, The Cedar & Stone began with the restoration of a 19th-century timber mill overlooking the garden brook. We wanted to build the kind of place we look for when traveling—comfortable beds, quiet mornings, real coffee, and food made with care.",
+      "Today, our 24 guest rooms combine natural cedar, soft woolens, and modern en-suite comforts. Downstairs, our garden bistro celebrates the harvest of local farms, serving sourdough baked every dawn, crisp orchard cider, and hearty wood-fired suppers.",
+      "Whether you are stopping for a restful weekend, booking a family celebration dinner, or spending a week exploring the valley, you are welcomed here as an invited guest."
+    ],
+    badges: ["Locally Owned", "Eco-Conscious Energy", "Pet-Friendly Ground Suites", "Farm Sourced"],
+    imageMain: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+    imageSecondary: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+    quote: "“The best compliment our guests give us is saying they slept better here than at home.”",
+    author: "Elena & David Miller, Owners",
+  },
+
+  rooms: [
+    {
+      id: "classic-queen",
+      title: "Standard Queen Room",
+      badge: "Most Popular for Solo & Couples",
+      capacity: "Up to 2 Guests",
+      bed: "1 Queen Bed (Organic Cotton Linen)",
+      size: "240 sq ft / 22 m²",
+      view: "Courtyard & Garden View",
+      price: "$145",
+      pricePeriod: "per night",
+      description: "A serene, quiet haven featuring warm timber accents, walk-in rainfall shower, handmade botanical toiletries, and bespoke work nook.",
+      amenities: ["Rainfall Shower", "High-Speed Wi-Fi", "Espresso Machine", "Garden View", "Air Conditioning"],
+      image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      id: "deluxe-king",
+      title: "Deluxe King Balcony Suite",
+      badge: "Scenic Mountain & Brook View",
+      capacity: "Up to 2 Guests",
+      bed: "1 King Plush Bed",
+      size: "360 sq ft / 33 m²",
+      view: "Private Brookside Balcony",
+      price: "$195",
+      pricePeriod: "per night",
+      description: "Generously proportioned with a private wooden balcony over the garden brook. Features a deep soaking clawfoot tub, seating lounge, and vinyl turntable.",
+      amenities: ["Private Balcony", "Clawfoot Soaking Tub", "Vinyl Record Player", "Complimentary Minibar", "Robes & Slippers"],
+      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      id: "family-garden-suite",
+      title: "Two-Bedroom Family Suite",
+      badge: "Ideal for Families & Small Groups",
+      capacity: "Up to 4 Guests",
+      bed: "1 King Bed + 2 Twin Beds",
+      size: "520 sq ft / 48 m²",
+      view: "Direct Garden Courtyard Access",
+      price: "$265",
+      pricePeriod: "per night",
+      description: "Two interconnected bedrooms with private garden patio access. Spacious lounge, mini-kitchenette with SMEG fridge, and twin vanity bathroom.",
+      amenities: ["2 Bedrooms", "Direct Garden Access", "Kitchenette with SMEG", "Board Games & Books", "Walk-in Wardrobe"],
+      image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=900&q=80",
+    },
+  ],
+
+  menuCategories: ["All", "Starters & Boards", "Hearty Mains", "From the Hearth", "Desserts & Drinks"],
+  
+  menuItems: [
+    {
+      id: "m1",
+      name: "Artisan Sourdough & Whipped Smoked Butter",
+      category: "Starters & Boards",
+      price: "$9",
+      dietary: "Vegetarian",
+      description: "Baked daily in our stone oven, served with house-smoked sea salt butter and wildflower honey dip.",
+      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+      featured: true,
+    },
+    {
+      id: "m2",
+      name: "Burrata & Roasted Heirloom Beets",
+      category: "Starters & Boards",
+      price: "$16",
+      dietary: "Gluten-Free",
+      description: "Fresh local burrata, fire-roasted baby beets, candied walnuts, arugula, and aged balsamic glaze.",
+      image: "https://images.unsplash.com/photo-1592417817098-8f3d6910985c?auto=format&fit=crop&w=600&q=80",
+      featured: false,
+    },
+    {
+      id: "m3",
+      name: "Cedar-Planked Mountain Trout",
+      category: "Hearty Mains",
+      price: "$28",
+      dietary: "Chef Signature",
+      description: "Locally caught brook trout roasted over fragrant cedar wood, crushed herbed fingerling potatoes, and lemon butter emulsion.",
+      image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80",
+      featured: true,
+    },
+    {
+      id: "m4",
+      name: "Slow-Braised Short Rib Ragù",
+      category: "Hearty Mains",
+      price: "$26",
+      dietary: "House Favorite",
+      description: "12-hour braised pasture-raised beef, handmade pappardelle, rosemary, and 24-month shaved Parmigiano-Reggiano.",
+      image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281699?auto=format&fit=crop&w=600&q=80",
+      featured: true,
+    },
+    {
+      id: "m5",
+      name: "Wood-Fired Wild Mushroom & Truffle Flatbread",
+      category: "From the Hearth",
+      price: "$21",
+      dietary: "Vegetarian",
+      description: "Foraged forest mushrooms, garlic thyme cream, fontina cheese, fresh watercress, and white truffle oil.",
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+      featured: false,
+    },
+    {
+      id: "m6",
+      name: "Cast-Iron Skillet Warm Berry Crumble",
+      category: "Desserts & Drinks",
+      price: "$11",
+      dietary: "Warm & Cozy",
+      description: "Valley blackberries and crisp apples with rolled oat crumble and a scoop of house vanilla bean ice cream.",
+      image: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80",
+      featured: true,
+    },
+    {
+      id: "m7",
+      name: "Smoked Rosemary Old Fashioned",
+      category: "Desserts & Drinks",
+      price: "$14",
+      dietary: "Signature Cocktail",
+      description: "Small-batch rye whiskey, maple syrup reduction, aromatic bitters, ignited garden rosemary sprig.",
+      image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80",
+      featured: false,
+    },
+    {
+      id: "m8",
+      name: "Cold-Pressed Orchard Cider (Non-Alcoholic)",
+      category: "Desserts & Drinks",
+      price: "$6",
+      dietary: "Refreshing",
+      description: "Freshly pressed heirloom apples with spiced cinnamon stick and orange peel garnish.",
+      image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+      featured: false,
+    },
+  ],
+
+  features: [
+    {
+      icon: "Wifi",
+      title: "Fast Fiber Wi-Fi",
+      description: "Solid high-speed connection throughout every guest bedroom, lounge, and sunny garden nook.",
+    },
+    {
+      icon: "UtensilsCrossed",
+      title: "Farm-to-Table Bistro",
+      description: "Fresh daily seasonal menu cooked with produce from family farms within 25 miles.",
+    },
+    {
+      icon: "Car",
+      title: "Private Guest Parking",
+      description: "Complimentary reserved parking on-site with secure level-2 EV charging bays.",
+    },
+    {
+      icon: "Coffee",
+      title: "Fresh Morning Roast",
+      description: "Artisan pour-overs and espresso brewed fresh each morning alongside warm oven pastries.",
+    },
+    {
+      icon: "MapPin",
+      title: "Walkable Historic Quarter",
+      description: "Step right out onto cobblestone lanes, local galleries, antique shops, and nature trails.",
+    },
+    {
+      icon: "Sparkles",
+      title: "Peaceful Natural Setting",
+      description: "Tucked beside a babbling brook with quiet garden seating, fire pits, and star-filled night skies.",
+    },
+  ],
+
+  gallery: [
+    {
+      id: 1,
+      title: "Main Inn Exterior & Garden Path",
+      category: "Grounds",
+      url: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      id: 2,
+      title: "Deluxe King Bedroom",
+      category: "Rooms",
+      url: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      id: 3,
+      title: "Garden Bistro Evening Tables",
+      category: "Dining",
+      url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      id: 4,
+      title: "Morning Artisan Coffee & Pastries",
+      category: "Dining",
+      url: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      id: 5,
+      title: "Guest Library & Fireplace Hearth",
+      category: "Interiors",
+      url: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      id: 6,
+      title: "Soaking Tub & Stone Bathroom",
+      category: "Rooms",
+      url: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      id: 7,
+      title: "Brookside Courtyard & Fire Pit",
+      category: "Grounds",
+      url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      id: 8,
+      title: "Seasonal Dinner Plate",
+      category: "Dining",
+      url: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+    },
+  ],
+
+  testimonials: [
+    {
+      id: 1,
+      quote: "We came for two nights and ended up staying four. The beds are heavenly, the trout at the bistro is unforgettable, and David greeted us like old friends.",
+      name: "Marcus & Sarah Jenkins",
+      role: "Weekend Anniversary Stay",
+      location: "Boston, MA",
+      rating: 5,
+      date: "September 2025",
+    },
+    {
+      id: 2,
+      quote: "As someone who works remotely while traveling, the Wi-Fi was rock solid and having sourdough pastries by the garden brook at 8 AM was pure bliss.",
+      name: "Claire Vance",
+      role: "Solo Traveler & Writer",
+      location: "Montreal, QC",
+      rating: 5,
+      date: "August 2025",
+    },
+    {
+      id: 3,
+      quote: "No pretentious hotel attitudes—just honest comfort, incredible farm-fresh meals, and peaceful nights. Our children loved the family suite.",
+      name: "The Thorne Family",
+      role: "Summer Family Vacation",
+      location: "New York, NY",
+      rating: 5,
+      date: "July 2025",
+    },
+  ],
+
+  faqs: [
+    {
+      q: "What time is check-in and check-out?",
+      a: "Check-in is from 3:00 PM to 10:00 PM. If you plan to arrive later, simply let us know and we will arrange our contactless key safe. Check-out is by 11:00 AM.",
+    },
+    {
+      q: "Is breakfast included with my room?",
+      a: "Yes! Every room booking includes our complimentary farm table breakfast from 7:30 AM to 10:30 AM, featuring hot coffee, seasonal fruit, house sourdough, and eggs to order.",
+    },
+    {
+      q: "Can I dine at the bistro if I am not staying at the hotel?",
+      a: "Absolutely! Our Garden Bistro welcomes both hotel guests and local neighbors. We recommend reserving tables for Friday and Saturday dinners in advance.",
+    },
+    {
+      q: "Are pets allowed?",
+      a: "We have two dedicated pet-friendly ground floor garden suites. Please mention your furry companion during booking so we can prep water bowls and treats ($30 per stay fee).",
+    },
+    {
+      q: "What is your cancellation policy?",
+      a: "Full refund up to 48 hours prior to your scheduled check-in date. Cancellations within 48 hours are subject to a one-night room charge.",
+    },
+  ],
+
+  nearbyAttractions: [
+    { name: "Old Mill Covered Bridge", dist: "0.2 miles", time: "4 min walk" },
+    { name: "Artisans Market & Pottery Works", dist: "0.4 miles", time: "8 min walk" },
+    { name: "Pinnacle Valley Hiking Trailhead", dist: "2.1 miles", time: "5 min drive" },
+    { name: "Riverbend Apple Orchard & Cider Mill", dist: "4.5 miles", time: "9 min drive" },
+  ],
+};
