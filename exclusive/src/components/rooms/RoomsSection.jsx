@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import SectionHeader from '../common/SectionHeader';
 import { suitesCollection, hotelBrand } from '../../data/hotelData';
 import { Maximize2, Users, Bed, Eye, ArrowRight, Sparkles } from 'lucide-react';
 import RoomDetailModal from './RoomDetailModal';
@@ -23,26 +22,33 @@ export default function RoomsSection({ currentCurrency = 'EUR', onOpenBookingWit
   const rateInfo = hotelBrand.currencyRates[currentCurrency] || hotelBrand.currencyRates.EUR;
 
   return (
-    <section id="suites" className="py-24 sm:py-32 bg-ivory-100/60 text-charcoal-900 border-t border-sand-200/60">
+    <section id="suites" className="py-28 sm:py-36 bg-ivory-100/60 text-charcoal-900 border-b border-sand-300/80 paper-grain relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <SectionHeader
-          badge="ROOMS & SUITES"
-          title="The Sanctuary Collection"
-          subtitle="Twenty-four sculpted chambers designed as peaceful observatories for light, mountain air, and the sea."
-        />
+        {/* Chapter Header */}
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-sand-300 pb-6 mb-16 gap-4">
+          <div className="flex items-center gap-3 text-xs font-mono tracking-widest uppercase text-bronze-700">
+            <span className="font-bold">CH. 04</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-bronze-600" />
+            <span>THE SANCTUARY COLLECTION — LES DEMEURES</span>
+          </div>
+          <span className="text-xs font-serif italic text-charcoal-600 tracking-wider">
+            Twenty-four chambers sculpted to frame light, mountain air, and the sea.
+          </span>
+        </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-16">
+        <div className="flex flex-wrap justify-start sm:justify-center gap-2 sm:gap-3 mb-16">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2 text-xs font-sans tracking-luxury uppercase transition-all duration-300 rounded-full ${
+              data-cursor="button"
+              data-cursor-text="FILTER"
+              className={`px-5 py-2.5 text-xs font-sans tracking-luxury uppercase transition-all duration-300 rounded-full ${
                 activeCategory === cat.id
-                  ? 'bg-olive-800 text-ivory-50 shadow-sm'
-                  : 'bg-ivory-50 text-charcoal-600 hover:text-charcoal-950 border border-sand-200 hover:border-sand-300'
+                  ? 'bg-olive-900 text-ivory-50 shadow-soft'
+                  : 'bg-ivory-50 text-charcoal-700 hover:text-charcoal-950 border border-sand-300 hover:border-sand-400'
               }`}
             >
               {cat.label}
@@ -50,91 +56,124 @@ export default function RoomsSection({ currentCurrency = 'EUR', onOpenBookingWit
           ))}
         </div>
 
-        {/* Suites Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12">
-          {filteredSuites.map((suite) => {
+        {/* Fashion Editorial Suites Layout: Asymmetrical alternating rhythm */}
+        <div className="space-y-20 sm:space-y-28">
+          {filteredSuites.map((suite, idx) => {
+            const isReversed = idx % 2 === 1;
             const price = Math.round(suite.priceEUR * rateInfo.rate);
 
             return (
               <div
                 key={suite.id}
-                className="group bg-ivory-50 border border-sand-200/80 rounded-sm overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 flex flex-col justify-between"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-14 items-center bg-ivory-50/90 border border-sand-300/80 p-6 sm:p-10 shadow-soft hover:shadow-elevated transition-all duration-700 rounded-sm"
               >
-                {/* Image Container with Zoom and Badge */}
-                <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-sand-200">
-                  <img
-                    src={suite.images[0]}
-                    alt={suite.title}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                {/* Photo Presentation (7 cols) */}
+                <div className={`lg:col-span-7 relative ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
+                  <div
+                    onClick={() => setSelectedSuiteForDetail(suite)}
+                    className="relative h-[360px] sm:h-[440px] w-full overflow-hidden rounded-sm bg-sand-200 cursor-pointer group"
+                    data-cursor="view"
+                    data-cursor-text="DISCOVER"
+                  >
+                    <img
+                      src={suite.images[0]}
+                      alt={suite.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-editorial"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/70 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity" />
 
-                  {/* Top Badge */}
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-ivory-50/90 backdrop-blur-sm text-charcoal-900 text-[10px] tracking-ultra uppercase font-medium">
-                    {suite.categoryLabel}
-                  </div>
-
-                  {/* Bottom Price Pill inside image */}
-                  <div className="absolute bottom-4 right-4 px-3 py-1.5 bg-charcoal-950/80 backdrop-blur-sm text-ivory-50 text-xs font-serif font-light">
-                    From <span className="font-semibold text-bronze-300">{rateInfo.symbol}{price.toLocaleString()}</span> / night
-                  </div>
-                </div>
-
-                {/* Card Content Body */}
-                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
-                  <div className="space-y-3">
-                    <div className="flex items-baseline justify-between gap-2">
-                      <span className="text-[11px] font-mono tracking-wider uppercase text-bronze-600">
-                        {suite.subtitle}
-                      </span>
-                      <span className="text-xs font-sans text-charcoal-400">
-                        {suite.size}
-                      </span>
+                    {/* Suite Plate Badge */}
+                    <div className="absolute top-4 left-4 px-3.5 py-1 bg-ivory-50/95 backdrop-blur-sm text-charcoal-950 text-[10px] tracking-ultra uppercase font-medium">
+                      0{idx + 1} • {suite.categoryLabel}
                     </div>
 
-                    <h3 className="font-serif text-2xl sm:text-3xl text-charcoal-950 font-light group-hover:text-olive-900 transition-colors">
+                    {/* Quick photo counter badge */}
+                    <div className="absolute bottom-4 right-4 px-3 py-1 bg-charcoal-950/80 backdrop-blur-sm text-ivory-50 text-[10px] font-mono tracking-widest uppercase">
+                      {suite.images.length} PHOTOGRAPHIC PERSPECTIVES
+                    </div>
+                  </div>
+
+                  {/* Overlapping secondary detail preview */}
+                  {suite.images[1] && (
+                    <div
+                      onClick={() => setSelectedSuiteForDetail(suite)}
+                      className={`hidden md:block absolute -bottom-6 ${isReversed ? '-left-6' : '-right-6'} w-40 h-28 overflow-hidden rounded-sm border-4 border-ivory-50 shadow-xl cursor-pointer hover:scale-105 transition-transform`}
+                    >
+                      <img src={suite.images[1]} alt="Suite architectural detail" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                </div>
+
+                {/* Editorial Details & Narrative (5 cols) */}
+                <div className={`lg:col-span-5 space-y-6 text-left ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-xs font-mono tracking-wider text-bronze-600 uppercase">
+                      <span>{suite.subtitle}</span>
+                      <span className="text-charcoal-500 font-sans">{suite.size}</span>
+                    </div>
+
+                    <h3 className="font-serif text-3xl sm:text-4xl text-charcoal-950 font-light leading-snug">
                       {suite.title}
                     </h3>
 
-                    <p className="font-sans text-charcoal-600 text-sm leading-relaxed line-clamp-2">
-                      {suite.description}
+                    <p className="font-editorial-italic text-sm sm:text-base text-olive-800">
+                      "{suite.tagline}"
                     </p>
                   </div>
 
-                  {/* Quick Feature Pills */}
-                  <div className="pt-4 border-t border-sand-200/80 grid grid-cols-2 gap-2 text-xs text-charcoal-600">
+                  <p className="font-sans text-charcoal-600 text-sm sm:text-base leading-relaxed font-light">
+                    {suite.description}
+                  </p>
+
+                  {/* Curated Key Specifications Matrix */}
+                  <div className="grid grid-cols-2 gap-3 py-4 border-y border-sand-300 text-xs text-charcoal-700">
                     <div className="flex items-center gap-2 truncate">
-                      <Bed className="w-3.5 h-3.5 text-bronze-500 shrink-0" />
+                      <Bed className="w-4 h-4 text-bronze-600 shrink-0" />
                       <span className="truncate">{suite.bed}</span>
                     </div>
                     <div className="flex items-center gap-2 truncate">
-                      <Users className="w-3.5 h-3.5 text-bronze-500 shrink-0" />
+                      <Users className="w-4 h-4 text-bronze-600 shrink-0" />
                       <span>{suite.capacity}</span>
                     </div>
-                    <div className="flex items-center gap-2 truncate col-span-2">
-                      <Sparkles className="w-3.5 h-3.5 text-bronze-500 shrink-0" />
+                    <div className="flex items-center gap-2 truncate col-span-2 text-olive-900 font-medium">
+                      <Sparkles className="w-4 h-4 text-bronze-500 shrink-0" />
                       <span className="truncate">{suite.features[0]}</span>
                     </div>
                   </div>
 
-                  {/* Actions row */}
-                  <div className="pt-2 flex items-center justify-between gap-4">
-                    <button
-                      onClick={() => setSelectedSuiteForDetail(suite)}
-                      className="text-xs uppercase tracking-luxury font-medium text-charcoal-800 hover:text-olive-800 flex items-center gap-1.5 transition-colors group/link"
-                    >
-                      <span>Discover Suite</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
-                    </button>
+                  {/* Actions & Nightly Rate */}
+                  <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <span className="text-[10px] uppercase font-sans tracking-luxury text-charcoal-400 block">
+                        Sanctuary Tariff
+                      </span>
+                      <div className="font-serif text-2xl sm:text-3xl text-charcoal-950 font-light">
+                        {rateInfo.symbol}{price.toLocaleString()} <span className="text-xs font-sans font-normal text-charcoal-500">/ night</span>
+                      </div>
+                    </div>
 
-                    <button
-                      onClick={() => onOpenBookingWithSuite(suite.id)}
-                      className="px-5 py-2.5 bg-olive-800 hover:bg-olive-900 text-ivory-50 text-xs font-semibold uppercase tracking-luxury transition-all rounded-sm shadow-sm"
-                    >
-                      Reserve
-                    </button>
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => setSelectedSuiteForDetail(suite)}
+                        data-cursor="button"
+                        data-cursor-text="VIEW"
+                        className="px-5 py-3 border border-sand-300 hover:border-charcoal-800 text-xs uppercase tracking-luxury text-charcoal-800 hover:text-charcoal-950 transition-colors"
+                      >
+                        Explore Dossier
+                      </button>
+
+                      <button
+                        onClick={() => onOpenBookingWithSuite(suite.id)}
+                        data-cursor="button"
+                        data-cursor-text="BOOK"
+                        className="px-6 py-3 bg-olive-900 hover:bg-charcoal-950 text-ivory-50 text-xs font-semibold uppercase tracking-luxury transition-all shadow-md"
+                      >
+                        Reserve
+                      </button>
+                    </div>
                   </div>
+
                 </div>
 
               </div>

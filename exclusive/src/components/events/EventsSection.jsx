@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import SectionHeader from '../common/SectionHeader';
 import { eventsData } from '../../data/hotelData';
-import { Users, Calendar, ArrowRight, Check } from 'lucide-react';
+import { Users, Calendar, ArrowRight, Check, Shield } from 'lucide-react';
 import Modal from '../common/Modal';
 
 export default function EventsSection() {
@@ -20,32 +19,39 @@ export default function EventsSection() {
   };
 
   return (
-    <section id="events" className="py-24 sm:py-32 bg-ivory-50 text-charcoal-900 relative">
+    <section id="events" className="py-28 sm:py-36 bg-ivory-50 text-charcoal-900 paper-grain border-b border-sand-300/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <SectionHeader
-          badge={eventsData.badge}
-          title={eventsData.headline}
-          subtitle={eventsData.intro}
-        />
+        {/* Chapter Header */}
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-sand-300 pb-6 mb-16 gap-4">
+          <div className="flex items-center gap-3 text-xs font-mono tracking-widest uppercase text-bronze-700">
+            <span className="font-bold">CH. 08</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-bronze-600" />
+            <span>PRIVATE GATHERINGS & BUYOUTS — LES GALA</span>
+          </div>
+          <span className="text-xs font-serif italic text-charcoal-600 tracking-wider">
+            An exclusive canvas for nuptials, creative salons, and reunions.
+          </span>
+        </div>
 
-        {/* 3 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* 3 Pillars Editorial Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           {eventsData.pillars.map((pillar, idx) => (
             <div
               key={idx}
-              className="bg-sand-50/60 border border-sand-200 rounded-sm overflow-hidden flex flex-col justify-between group hover:border-bronze-400 transition-all duration-300 shadow-soft"
+              className="bg-ivory-50 border border-sand-300 rounded-sm overflow-hidden flex flex-col justify-between group hover:border-bronze-500 transition-all duration-700 shadow-soft"
             >
-              <div className="h-56 overflow-hidden relative">
+              <div className="h-64 overflow-hidden relative bg-sand-200">
                 <img
                   src={pillar.image}
                   alt={pillar.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-editorial"
                   loading="lazy"
+                  data-cursor="view"
+                  data-cursor-text="GATHER"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/70 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-3 px-3 py-1 bg-ivory-50/90 text-charcoal-900 text-[10px] uppercase font-sans tracking-luxury">
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/70 via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-3 left-3 px-3 py-1 bg-ivory-50/95 backdrop-blur-sm text-charcoal-900 text-[10px] uppercase font-mono tracking-wider">
                   {pillar.capacity}
                 </div>
               </div>
@@ -60,13 +66,15 @@ export default function EventsSection() {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-sand-200">
+                <div className="pt-4 border-t border-sand-300">
                   <button
                     onClick={() => {
                       setSelectedEventType(pillar.title);
                       setInquiryModalOpen(true);
                     }}
-                    className="text-xs uppercase tracking-luxury font-medium text-olive-800 hover:text-charcoal-950 flex items-center gap-1.5 transition-colors group/link"
+                    data-cursor="button"
+                    data-cursor-text="DOSSIER"
+                    className="text-xs uppercase tracking-luxury font-medium text-olive-900 hover:text-charcoal-950 flex items-center gap-1.5 transition-colors group/link"
                   >
                     <span>Request Dossier</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
@@ -77,19 +85,19 @@ export default function EventsSection() {
           ))}
         </div>
 
-        {/* Private Estate Buyout Banner */}
-        <div className="p-8 sm:p-12 bg-olive-900 text-ivory-50 rounded-sm flex flex-col lg:flex-row items-center justify-between gap-8 text-left relative overflow-hidden">
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-olive-800/40 rounded-full blur-3xl pointer-events-none" />
+        {/* Private Estate Buyout Statement Banner */}
+        <div className="p-8 sm:p-14 bg-olive-950 text-ivory-50 rounded-sm flex flex-col lg:flex-row items-center justify-between gap-8 text-left relative overflow-hidden shadow-elevated">
+          <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-olive-900/30 rounded-full blur-3xl pointer-events-none" />
           
-          <div className="space-y-3 max-w-2xl relative z-10">
+          <div className="space-y-4 max-w-2xl relative z-10">
             <span className="text-[10px] tracking-ultra uppercase text-bronze-300 font-mono">
-              EXCLUSIVITY & BUYOUTS
+              EXCLUSIVITY • FULL ESTATE PRIVATIZATION
             </span>
-            <h3 className="font-serif text-3xl sm:text-4xl font-light text-ivory-50">
+            <h3 className="font-serif text-3xl sm:text-5xl font-light text-ivory-50 leading-tight">
               Your Own Private Mediterranean Kingdom
             </h3>
             <p className="text-sm sm:text-base text-sand-200/90 font-light leading-relaxed">
-              Reserving the full 24 suites allows your inner circle absolute freedom. Complete seclusion, bespoke culinary itineraries by Chef Matteo, and dedicated private boat expeditions.
+              Reserving all 24 sanctuaries grants your inner circle absolute freedom. Complete seclusion, bespoke culinary itineraries by Chef Matteo, and dedicated private boat expeditions.
             </p>
           </div>
 
@@ -99,7 +107,9 @@ export default function EventsSection() {
                 setSelectedEventType('Full Estate Buyout (24 Suites)');
                 setInquiryModalOpen(true);
               }}
-              className="w-full sm:w-auto px-8 py-4 bg-bronze-400 hover:bg-bronze-300 text-charcoal-950 font-semibold text-xs tracking-luxury uppercase transition-all shadow-lg"
+              data-cursor="button"
+              data-cursor-text="CONSULT"
+              className="w-full sm:w-auto px-9 py-4 bg-bronze-400 hover:bg-bronze-300 text-charcoal-950 font-semibold text-xs tracking-luxury uppercase transition-all shadow-lg"
             >
               Consult Event Director
             </button>
@@ -112,7 +122,7 @@ export default function EventsSection() {
       <Modal
         isOpen={inquiryModalOpen}
         onClose={handleClose}
-        title={submitted ? "Inquiry Sent" : "Private Gatherings Dossier"}
+        title={submitted ? "Inquiry Transmitted" : "Private Gatherings Dossier"}
         subtitle={selectedEventType}
         maxWidth="max-w-xl"
       >
@@ -129,7 +139,7 @@ export default function EventsSection() {
             </p>
             <button
               onClick={handleClose}
-              className="px-6 py-2.5 bg-olive-800 text-ivory-50 text-xs uppercase tracking-luxury font-semibold"
+              className="px-6 py-2.5 bg-olive-900 text-ivory-50 text-xs uppercase tracking-luxury font-semibold"
             >
               Close
             </button>
@@ -212,7 +222,7 @@ export default function EventsSection() {
               </button>
               <button
                 type="submit"
-                className="px-6 py-2.5 bg-olive-800 text-ivory-50 text-xs font-semibold uppercase tracking-luxury"
+                className="px-6 py-2.5 bg-olive-900 text-ivory-50 text-xs font-semibold uppercase tracking-luxury"
               >
                 Send Dossier Request
               </button>
